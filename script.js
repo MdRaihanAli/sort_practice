@@ -7,11 +7,17 @@ const loadDta = async ()=>{
 
 
 let shoted = 'no'
-
+let co = 3
 document.getElementById('options').addEventListener('change',(e)=>{
     shoted = e.target.value;
+    
     loadDta()
 })
+
+const full =()=>{
+    co = 9999999;
+    loadDta()
+}
 
 const shortFun =(ha)=>{
     shoted = ha
@@ -33,17 +39,17 @@ const filter = (datas)=>{
             return dateA - dateB
         })
     }
-    cardDataShow(datas);
+    cardDataShow(datas,co);
     console.log(datas);    
 }
 
 
 
 
-const cardDataShow = (datas) =>{
+const cardDataShow = (datas,co) =>{
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML=''
-    datas.forEach(data => {
+    datas.slice(0,co).forEach(data => {
         let div = document.createElement('div');
         div.classList.add('card','w-full', 'bg-base-100', 'shadow-xl');
 
